@@ -19,7 +19,6 @@ async function fetchData(input: RequestInfo, init?:RequestInit){
         else{
             throw Error("Request failed with status: "+response.status+" message: "+errorMessage);
         }
-        throw Error(errorMessage);
     }
 }
 

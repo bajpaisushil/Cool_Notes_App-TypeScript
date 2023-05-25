@@ -26,7 +26,8 @@ function App() {
         console.error(error);
       }
     }
-  })
+    fetchLoggedInUser();
+  }, [])
 
   return (
     <BrowserRouter>
