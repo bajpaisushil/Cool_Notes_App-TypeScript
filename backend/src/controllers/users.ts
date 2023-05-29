@@ -53,6 +53,7 @@ interface loginBody{
     password?: string,
 }
 export const login: RequestHandler<unknown, unknown, loginBody, unknown>=async(req, res, next)=>{
+    console.log(typeof req.body, "||", req.body);
     const username=req.body.username;
     const password=req.body.password;
     try {

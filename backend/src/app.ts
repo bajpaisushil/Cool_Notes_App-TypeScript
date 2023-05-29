@@ -11,7 +11,7 @@ import { requiresAuth } from "./middleware/auth";
 
 const app=express();
 
-app.use(morgan("dev"));
+app.use(morgan("tiny"));
 app.use(express.json());
 
 app.use(session({
