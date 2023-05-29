@@ -35,6 +35,7 @@ export interface signUpCredentials{
 export async function signUp(credentials: signUpCredentials): Promise<User>{
     const response=await fetchData("/api/users/signup", {
         method: "POST",
+        
         headers: {
             "Content-Type": "application/json",
         },
@@ -49,6 +50,7 @@ export interface loginCredentials{
 export async function login(credentials: loginCredentials): Promise<User>{
     const response=await fetchData("/api/users/login", {
         method: "POST",
+        
         headers: {
             "Content-Type": "application/json",
         },
@@ -59,7 +61,6 @@ export async function login(credentials: loginCredentials): Promise<User>{
 export async function logout(){
     await fetchData("/api/users/logout", {method: "POST"});
 }
-
 
 export async function fetchNotes(): Promise<Note[]>{
     const response=await fetchData("/api/notes", {method: "GET"});
@@ -75,6 +76,7 @@ export async function createNote(note: NoteInput): Promise<Note>{
     const response=await fetchData("/api/notes",
     {
         method: "POST",
+        
         headers: {
             "Content-Type": "application/json",
         },
@@ -86,6 +88,7 @@ export async function createNote(note: NoteInput): Promise<Note>{
 export async function updateNote(noteId: string, note: NoteInput): Promise<Note>{
     const response=await fetchData("/api/notes/"+noteId, {
         method: "PATCH",
+        
         headers: {
             "Content-Type": "application/json",
         },
