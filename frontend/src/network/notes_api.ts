@@ -23,7 +23,7 @@ async function fetchData(input: RequestInfo, init?:RequestInit){
 }
 
 export async function getLoggedInUser(): Promise<User>{
-    const response=await fetchData("https://notes-app-backendn.onrender.com/api/notes", {method: "GET"});
+    const response=await fetchData("/api/notes", {method: "GET", mode: "no-cors"});
     return response.json();
 }
 export interface signUpCredentials{
@@ -33,9 +33,9 @@ export interface signUpCredentials{
 }
 
 export async function signUp(credentials: signUpCredentials): Promise<User>{
-    const response=await fetchData("https://notes-app-backendn.onrender.com/api/users/signup", {
+    const response=await fetchData("/api/users/signup", {
         method: "POST",
-        
+        mode: "no-cors",
         headers: {
             "Content-Type": "application/json",
         },
@@ -48,23 +48,23 @@ export interface loginCredentials{
     password: string,
 }
 export async function login(credentials: loginCredentials): Promise<User>{
-    const response:any=await fetchData("https://notes-app-backendn.onrender.com/api/users/login", {
-        method: "POST",
-        
+    const response:any=await fetchData("/api/users/login", {
+        method: "POST", mode: "no-cors",
         headers: {
             "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(credentials)
     });
-    alert(JSON.parse(response));
+    // alert(response);
     return response.json();
 }
 export async function logout(){
-    await fetchData("https://notes-app-backendn.onrender.com/api/users/logout", {method: "POST"});
+    await fetchData("/api/users/logout", {method: "POST", mode: "no-cors"});
 }
 
 export async function fetchNotes(): Promise<Note[]>{
-    const response=await fetchData("https://notes-app-backendn.onrender.com/api/notes", {method: "GET"});
+    const response=await fetchData("/api/notes", {method: "GET", mode: "no-cors"});
     return response.json();
 }
 
@@ -74,10 +74,9 @@ export interface NoteInput{
 }
 
 export async function createNote(note: NoteInput): Promise<Note>{
-    const response=await fetchData("https://notes-app-backendn.onrender.com/api/notes",
+    const response=await fetchData("/api/notes",
     {
-        method: "POST",
-        
+        method: "POST", mode: "no-cors",
         headers: {
             "Content-Type": "application/json",
         },
@@ -87,9 +86,9 @@ export async function createNote(note: NoteInput): Promise<Note>{
 }
 
 export async function updateNote(noteId: string, note: NoteInput): Promise<Note>{
-    const response=await fetchData("https://notes-app-backendn.onrender.com/api/notes/"+noteId, {
+    const response=await fetchData("/api/notes/"+noteId, {
         method: "PATCH",
-        
+        mode: "no-cors",
         headers: {
             "Content-Type": "application/json",
         },
@@ -99,5 +98,5 @@ export async function updateNote(noteId: string, note: NoteInput): Promise<Note>
 }
 
 export async function deleteNote(noteId: string){
-    await fetchData("https://notes-app-backendn.onrender.com/api/notes/"+noteId, {method: "DELETE"});
+    await fetchData("/api/notes/"+noteId, {method: "DELETE", mode: "no-cors"});
 }
