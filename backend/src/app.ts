@@ -13,7 +13,7 @@ const cors=require('cors');
 const app=express();
 app.use(cors({
     credentials: true,
-    origin: ["https://cool-notes-app-mern.netlify.app/", 'http:localhost:3000']
+    origin: ["https://cool-notes-app-mern.netlify.app/", 'http:localhost:3000/']
 }));
 app.use(morgan("dev"));
 app.use(express.json());
