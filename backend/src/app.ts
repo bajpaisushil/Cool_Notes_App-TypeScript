@@ -13,7 +13,7 @@ const cors=require('cors');
 const app=express();
 app.use(cors({
     credentials: true,
-    origin: "https://notes-app-backendn.onrender.com",
+    origin: "https://cool-notes-app-mern.netlify.app/",
 }));
 app.use(morgan("dev"));
 app.use(express.json());
