@@ -11,10 +11,7 @@ import { requiresAuth } from "./middleware/auth";
 const cors=require('cors');
 
 const app=express();
-app.use(cors({
-    credentials: true,
-    origin: "https://cool-notes-app-mern.netlify.app/",
-}));
+app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
