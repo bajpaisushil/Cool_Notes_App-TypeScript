@@ -81,6 +81,7 @@ export async function login(credentials: any){
 export async function logout(){
     await axios.request({
         url: "/api/users/logout",
+        withCredentials: true,
         baseURL: "https://notes-app-backendn.onrender.com",
         method: "POST",
     })
@@ -89,6 +90,7 @@ export async function logout(){
 export async function fetchNotes(): Promise<Note[]>{
     const response=await axios.request({
         url: "/api/notes",
+        withCredentials: true,
         baseURL: "https://notes-app-backendn.onrender.com",
         method: "GET",
     });
@@ -105,7 +107,7 @@ export async function createNote(note: any): Promise<Note>{
         url: "/api/notes",
         baseURL: "https://notes-app-backendn.onrender.com",
             method: "POST",
-            
+            withCredentials: true,
             headers: {
                 "Content-Type": "application/json",
             },
@@ -119,7 +121,7 @@ export async function updateNote(noteId: string, note: NoteInput): Promise<Note>
         url: "/api/notes/"+noteId,
         baseURL: "https://notes-app-backendn.onrender.com",
         method: "PATCH",
-        
+        withCredentials: true,
         headers: {
             "Content-Type": "application/json",
         },
