@@ -60,7 +60,7 @@ export const login: RequestHandler<unknown, unknown, loginBody, unknown>=async(r
         if(!username || !password){
             throw createHttpError(400, "Parameters missing");
         }
-        const user=await UserModel.findOne({username: username}).select("+password +email").exec();
+        const user=await UserModel.findOne({username: username}).select("+password +email");
         if(!user){
             throw createHttpError(401, "Invalid Credentials");
         }
