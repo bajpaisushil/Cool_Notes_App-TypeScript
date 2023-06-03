@@ -11,10 +11,7 @@ import { requiresAuth } from "./middleware/auth";
 const cors=require('cors');
 
 const app=express();
-app.use(cors({
-    origin: '*',
-credentials: true,
-}));
+app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
