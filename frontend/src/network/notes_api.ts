@@ -52,7 +52,7 @@ export async function login(credentials: any): Promise<User>{
     alert("credentials =>>" + credentials + "\n" + credentials?.username)
     const response:any=await axios.request({
         url: "/api/users/login",
-        baseURL: "http://localhost:3000",
+        baseURL: "https://notes-app-backendn.onrender.com",
         method: "POST",
         withCredentials: true,
         headers: {
