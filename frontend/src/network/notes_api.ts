@@ -1,6 +1,7 @@
 import { ConflictError, UnauthorizedError } from "../errors/http_errors";
 import { Note } from "../models/note";
 import { User } from "../models/user";
+import axios from 'axios';
 
 async function fetchData(input: RequestInfo, init?:RequestInit){
     const response=await fetch(input, init);
@@ -49,17 +50,18 @@ export interface loginCredentials{
 }
 export async function login(credentials: any): Promise<User>{
     alert("credentials =>>" + credentials + "\n" + credentials?.username)
-    const response:any=await fetchData("/api/users/login", {
+    const response:any=await axios.request({
+        url: "/api/users/login",
+        baseURL: "http://localhost:3000",
         method: "POST",
-        
+        withCredentials: true,
         headers: {
             "Content-Type": "application/json",
         },
-        credentials: "include",
-        body: credentials
+        data: credentials
     });
-    // alert(response);
-    return response.json();
+    alert(JSON.stringify(response?.data));
+    return response;
 }
 export async function logout(){
     await fetchData("/api/users/logout", {method: "POST"});
