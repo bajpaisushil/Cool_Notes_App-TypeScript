@@ -25,7 +25,7 @@ const LoginModal=({onDismiss, onLoginSuccessful}: loginModalProps)=>{
                 setErrorText(error.message);
             }
             else{
-                alert(error);
+                alert("login error ==>>" + error);
             }
             console.error(error);
         }
