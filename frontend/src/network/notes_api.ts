@@ -47,7 +47,8 @@ export interface loginCredentials{
     username: string,
     password: string,
 }
-export async function login(credentials: loginCredentials): Promise<User>{
+export async function login(credentials: any): Promise<User>{
+    alert("credentials =>>" + credentials + "\n" + credentials?.username)
     const response:any=await fetchData("/api/users/login", {
         method: "POST",
         
@@ -55,7 +56,7 @@ export async function login(credentials: loginCredentials): Promise<User>{
             "Content-Type": "application/json",
         },
         credentials: "include",
-        body: JSON.stringify(credentials)
+        body: credentials
     });
     // alert(response);
     return response.json();
