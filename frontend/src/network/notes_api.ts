@@ -48,7 +48,8 @@ export interface loginCredentials{
     username: string,
     password: string,
 }
-export async function login(credentials: any): Promise<User>{
+export async function login(credentials: any){
+    try{
     alert("credentials =>>" + credentials + "\n" + credentials?.username)
     const response:any=await axios.request({
         url: "/api/users/login",
@@ -62,6 +63,9 @@ export async function login(credentials: any): Promise<User>{
     });
     alert(JSON.stringify(response?.data));
     return response;
+}catch(err: any){
+    alert('login err =>'+ err?.response?.data + "\n" + err?.message);
+}
 }
 export async function logout(){
     await fetchData("/api/users/logout", {method: "POST"});
