@@ -11,10 +11,10 @@ import { requiresAuth } from "./middleware/auth";
 const cors=require('cors');
 
 const app=express();
-// app.use(cors({
-//     credentials: true,
-//     origin: "http://localhost:3000",
-// }));
+app.use(cors({
+    credentials: true,
+    origin: "https://notes-app-backendn.onrender.com",
+}));
 app.use(morgan("dev"));
 app.use(express.json());
 
